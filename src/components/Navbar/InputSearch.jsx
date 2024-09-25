@@ -8,9 +8,12 @@ const ImputSearch = () => {
     const router = useRouter()
 
     const HandleSearch = ( /** @type {{ preventDefault: () => void; }} */ event) => {
+        const keyword = searchRef.current.value
+        
         if(event.key === "Enter" || event.type === "click"){
+            if (keyword.length == 0 || keyword == " ") return alert("please input your titie or name of anime")
+            // else if (keyword == " ") return alert("please input your title anime")
             event.preventDefault()
-            const keyword = searchRef.current.value
             router.push(`/Search/${keyword}`)
         }
         // console.log(router)

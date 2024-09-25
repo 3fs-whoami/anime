@@ -10,11 +10,11 @@ const Page = async({params}) => {
       throw new Error('Failed to fetch');
     }
     const SearchAnime = await response.json();
-    const search = decodeURIComponent(keyword);
+    const decodedKeyword = decodeURI(keyword);
     // console.log(search)
   return (
     <div className="mx-5 mb-8">
-      <Header title={`Search Anime "${search}"..`}/>
+      <Header title={`Search Anime "${decodedKeyword}"..`}/>
       <AnimeList api={SearchAnime}/>
     </div>
   );
