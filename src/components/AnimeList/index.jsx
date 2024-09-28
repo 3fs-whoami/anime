@@ -6,7 +6,7 @@ const Page = ({ api }) => {
         {api.data?.map((anime, index) => {
             // console.log(anime)
             return (
-                <div key={`${anime.mal_id}-${index}`} className="shadow-lg shadow-color-primary">
+                <div key={`${index}`} className="shadow-lg shadow-color-primary">
                     <Link href={`/anime/${anime.mal_id}`} className="hover:text-color-accent text-color-primary cursor-pointer transition-all">
                         <Image 
                         src={anime.images.webp.image_url}

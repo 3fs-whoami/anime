@@ -1,19 +1,26 @@
 import AnimeList from "@/components/AnimeList"
 import Header from "@/components/AnimeList/header"
-import { getAnimeResponse, getNestedAnimeResponse, reproduce } from "@/app/libs/api-libs"
+import { getAnimeResponse, getNestedAnimeResponse, reproduce } from "@/libs/api-libs"
 
 const Page = async() => {
-  // try {
-    // const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=8`);
-    // if (!response.ok) {
-    //   throw new Error('Failed to fetch');
-    // }
     const topAnime = await getAnimeResponse("top/anime", "limit=8")
-  return (
-    <div className="mx-5 mb-8">      
-      <Header title="Top Anime" linkHref="/populer" linkTitle="Lihat semua"/>
-      <AnimeList api={topAnime}/>
-    </div>
+    let recomendedAnime = await getNestedAnimeResponse("recommendations/anime", "entry")
+    const test = reproduce(recomendedAnime, 8)
+    // console.log(test)
+
+    return (
+    <>
+      <section className="mx-5 mb-10">      
+        <Header title="Top Anime" linkHref="/populer" linkTitle="Lihat semua"/>
+        <AnimeList api={topAnime}/>
+      </section>
+      <section className="mx-5 mb-10"> 
+        <Header title="Rekomendasi" />
+        <div className="mb-10 ">
+        <AnimeList api={test}/>
+        </div>     
+      </section>
+    </>
   );
 // } catch (error) {
 //   console.error('Error fetching anime:', error);
