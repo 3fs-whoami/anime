@@ -1,5 +1,5 @@
 import Link from "next/link"
-import ImputSearch from "./InputSearch"
+import ImputSearch from "./inputSearch"
 const Page = () => {
     return (
         <header className="bg-color-accent">
