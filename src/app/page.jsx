@@ -10,9 +10,11 @@ const Page = async() => {
 
     return (
     <>
-      <section className="mx-5 mb-10">      
+      <section className="mx-5 mt-10 mb-10 ">      
         <Header title="Top Anime" linkHref="/populer" linkTitle="Lihat semua"/>
+        <div className="mb-10 ">
         <AnimeList api={topAnime}/>
+        </div>
       </section>
       <section className="mx-5 mb-10"> 
         <Header title="Rekomendasi" />

@@ -1,7 +1,7 @@
 import { getAnimeId, getAnimeResponse, getNestedAnimeResponse, reproduce } from "@/libs/api-libs"
 import Image from "next/image"
 import VideoPlayer from "@/components/utilities/videoPlayer"
-
+// import Header from "@/components/Dashboard/Header"
 
 const Page = async ({params: {id}}) => {
     const anime = await getAnimeId(`anime/${id}`)
@@ -9,6 +9,7 @@ const Page = async ({params: {id}}) => {
     
     return (
         <div className="mb-10">
+            {/* <Header title={"searh Anime"}/> */}
             <div className="pt-4 px-4">
                 <h3 className="text-2xl text-color-primary border-color-accent">{anime.data.title} - {anime.data.year}</h3>
             </div>
