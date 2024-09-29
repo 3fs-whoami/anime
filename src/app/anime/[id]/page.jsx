@@ -21,7 +21,8 @@ const Page = async ({params: {id}}) => {
             {/* <Header title={"searh Anime"}/> */}
             <div className="pt-4 px-4">
                 <h3 className="text-2xl text-color-primary border-color-accent">{anime.data.title} - {anime.data.year}</h3>
-                 {user && <CollectionButton anime_mal_id={id} user_email={user?.email} logic={collection}/>
+                 {user && <CollectionButton anime_mal_id={id} user_email={user?.email} anime_image=
+                 {anime.data.images.webp.image_url} anime_title={anime.data.title} logic={collection}/>
 
                  }
                 
