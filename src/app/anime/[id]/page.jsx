@@ -1,17 +1,30 @@
 import { getAnimeId, getAnimeResponse, getNestedAnimeResponse, reproduce } from "@/libs/api-libs"
 import Image from "next/image"
 import VideoPlayer from "@/components/utilities/videoPlayer"
+import CollectionButton from "@/components/AnimeList/CollectionButton"
+import { authUserSession } from "@/libs/auth-libs"
+import prisma from "@/libs/prisma"
 // import Header from "@/components/Dashboard/Header"
 
 const Page = async ({params: {id}}) => {
     const anime = await getAnimeId(`anime/${id}`)
+    const user = await authUserSession()
+    const collection = await prisma.collection.findFirst({
+        where: { user_email: user?.email, anime_mal_id: id}
+    })
+    // console.log(collection)
+    // console.log(user)
     // console.log(anime.data)
     
     return (
-        <div className="mb-10">
+        <div className="mb-10 mt-6">
             {/* <Header title={"searh Anime"}/> */}
             <div className="pt-4 px-4">
                 <h3 className="text-2xl text-color-primary border-color-accent">{anime.data.title} - {anime.data.year}</h3>
+                 {user && <CollectionButton anime_mal_id={id} user_email={user?.email} logic={collection}/>
+
+                 }
+                
             </div>
             <div className="pt-4 px-4 flex gap-2 overflow-x-auto text-color-primary ">
                 <div className="w-36 flex flex-col justify-center items-center rounded border border-color-primary p-2">

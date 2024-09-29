@@ -24,14 +24,16 @@ const Page = ({ params }) => {
   }, [page, decodedKeyword]); // Add decodedKeyword to dependency array
 
   return (
-    <div className="mx-5 mb-8">
+    <div className="mx-5 mb-10 mt-5">
       <Header title={`Search Anime "${decodedKeyword}"..`} />
       <AnimeList api={topAnime} />
+      <footer className="my-5">
       <Pagination 
         page={page} 
         lastPage={topAnime.pagination?.last_visible_page}
         setPage={setPage} 
       />
+      </footer>
     </div>
   );
 };

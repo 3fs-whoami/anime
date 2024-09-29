@@ -24,13 +24,15 @@ const Page = () => {
 
 
   return (
-    <div>
+    <div className="mx-5 mb-10">
       <HeaderMenu title={`ANIME TERPOPULER #${page}`}/>
-      <AnimeList api={topAnime}/>
-      <Pagination 
-      page={page} 
-      lastPage={topAnime.pagination?.last_visible_page}
-      setPage={setPage}/>
+      <section>
+        <AnimeList api={topAnime}/>
+        <Pagination 
+        page={page} 
+        lastPage={topAnime.pagination?.last_visible_page}
+        setPage={setPage}/>
+      </section>
     </div>
   );
 };
