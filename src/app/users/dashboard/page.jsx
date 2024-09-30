@@ -7,7 +7,7 @@ const Page = async() => {
     // console.log(user)
 
     return(
-        <div className="mt-8 text-color-primary flex flex-col justify-center items-center">
+        <div className="mt-6 px-4 py-8 text-color-primary flex flex-col justify-center items-center">
             <h3 className="text-2xl font-bold">DASHBOARD</h3>
             <h5>Welcome {user.name}</h5>
             <Image src={user.image} alt="..." width={250} height={250}></Image>
