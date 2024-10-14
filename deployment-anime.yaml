@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: anime-list
+  namespace: default
+  labels:
+    app: anime-list
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: anime-list
+  template:
+    metadata:
+      labels:
+        app: anime-list
+    spec:
+      containers:
+      - name: anime-list
+        image: fauzi28/anime-list:1.4
+        ports:
+        - containerPort: 3000
+        
